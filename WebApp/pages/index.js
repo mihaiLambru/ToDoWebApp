@@ -50,18 +50,26 @@ const TasksPanelDiv = styled.div`
 `
 
 const indexPage = () => {
+    const router = useRouter();
+    const { userId } = router.query;
+    useEffect(() => {
+        if (userId === undefined) {
+            router.push('/?userId=1');
+        }
+    }, [])
+
     return (
         <Provider store={store}>
-                <Wrapper>
-                    <InfoPanelDiv>
-                        <UserPanel />
-                        <TasksDetails />
-                    </InfoPanelDiv>
-                    <TasksPanelDiv>
-                        <TasksPanel />
-                    </TasksPanelDiv>
-                </Wrapper>
-                <BackgroundEffect />
+            <Wrapper>
+                <InfoPanelDiv>
+                    <UserPanel />
+                    <TasksDetails />
+                </InfoPanelDiv>
+                <TasksPanelDiv>
+                    <TasksPanel />
+                </TasksPanelDiv>
+            </Wrapper>
+            <BackgroundEffect />
         </Provider>)
 }
 export default indexPage;

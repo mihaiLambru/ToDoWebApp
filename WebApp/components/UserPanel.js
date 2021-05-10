@@ -37,6 +37,7 @@ const UserPanel = (props) => {
         else setRating(0);
     }, [props.tasksData.tasks])
 
+
     return (
         <Wrapper>
 

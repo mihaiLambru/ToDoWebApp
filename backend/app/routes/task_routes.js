@@ -30,7 +30,6 @@ module.exports = function (app, db) {
 
                 sentObj.completed = false;
                 tasksData.push(sentObj)
-                console.log(tasksData.length);
                 //write to file
                 fs.writeFile(fileName, JSON.stringify(tasksData), err => { if (err) throw err; })
                 res.status(201).send({ ...sentObj })
@@ -63,7 +62,6 @@ module.exports = function (app, db) {
                 res.status(400).send({ message: "Task ID not provided!" })
                 return;
             }
-            console.log(taskId)
             let deletedTask = null;
             tasksData = tasksData.filter(task => {
                 if (task.id == taskId) {
@@ -90,7 +88,6 @@ module.exports = function (app, db) {
             const taskId = req.query.taskId;
             const completedStatus = req.body.completed;
             //validation
-            console.log(completedStatus, taskId);
             if (taskId === undefined || completedStatus === undefined) {
                 res.status(400).send({ message: "Task ID not provided!" })
                 return;

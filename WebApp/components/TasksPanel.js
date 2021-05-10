@@ -50,17 +50,15 @@ const TasksPanel = (props) => {
         if (userId === undefined) {
             return;
         }
-        console.log("USEEFFECT")
         axios.get("task", {
             params: { userId: userId }
         })
             .then((res) => {
-                console.log(res.data)
                 const data = res.data.map(element => ({ ...element, isShown: true }));
                 props.setTasksArray(data);
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.message);
             })
     }, [userId])
 
@@ -70,7 +68,6 @@ const TasksPanel = (props) => {
                 userId: userId,
                 title: newTask
             }
-            console.log(task);
             axios.post("task", {
                 ...task
             })

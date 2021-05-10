@@ -5,7 +5,6 @@ function useTaskAction(arrayProp, setArrayProp) {
 
 
     const shouldUpdate = (updatedArray) => {
-        console.log(updatedArray)
         if (!Array.isArray(updatedArray)) {
             return false;
         }
@@ -34,7 +33,7 @@ function useTaskAction(arrayProp, setArrayProp) {
                 setArrayHandler(updatedArray);
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.message);
             })
 
     }
@@ -49,7 +48,7 @@ function useTaskAction(arrayProp, setArrayProp) {
                 setArrayHandler(updatedArray);
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.message);
             })
 
 
